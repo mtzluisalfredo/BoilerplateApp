@@ -1,8 +1,11 @@
 
-import { Navigation } from 'react-native-navigation';
+import { registerScreen } from './services/navigation'
+import Home from './Home'
+import Auth from './Auth'
+import Initializing from './Initializing'
 
-export function registerScreens() {
-    Navigation.registerComponent('App', () => require('./App').default);
-    Navigation.registerComponent('Home', () => require('./Home').default);
-    Navigation.registerComponent('Auth', () => require('./Auth').default);
+export const registerScreens = () => {
+  registerScreen('Home', Home);
+  registerScreen('Initializing', Initializing);
+  registerScreen('Auth', Auth);
 }
