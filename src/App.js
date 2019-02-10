@@ -1,4 +1,3 @@
-// Initializing.js
 import React from 'react'
 import {
   View,
@@ -14,6 +13,7 @@ export default class App extends React.Component {
   async componentDidMount() {
     try {
       const user = 1
+      // const user = await AsyncStorage.getItem('USER_KEY')
       console.log('user: ', user)
       if (user) {
         goHome()
