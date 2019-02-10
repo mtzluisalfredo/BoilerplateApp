@@ -1,37 +1,32 @@
-import React from 'react'
-import {
-  View,
-  Text,
-  Button,
-  StyleSheet,
-  AsyncStorage
-} from 'react-native'
+import React, { Component } from 'react';
+import { Text, View } from 'react-native';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { ActionCreators } from './redux/action';
 
-
-export default class Home extends React.Component {
-  static get options() {
-    return {
-      topBar: {
-        title: {
-          text: 'Home'
-        },
-      }
-    };
+class Home extends Component {
+  componentDidMount() {
+    const { triggerDefault } = this.props;
+    triggerDefault();
   }
 
   render() {
+    const { message } = this.props;
     return (
-      <View style={styles.container}>
-        <Text>Hello from Home screen..</Text>
+      <View>
+        <Text>{message}</Text>
       </View>
-    )
+    );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-})
+const mapStateToProps = state => ({
+  message: state.defaultReducer.message,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Home);

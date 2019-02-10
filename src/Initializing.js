@@ -12,7 +12,7 @@ import { goToAuth, goHome } from './navigation'
 export default class Initializing extends React.Component {
   async componentDidMount() {
     try {
-      const user = 0
+      const user = 1
       // const user = await AsyncStorage.getItem('USER_KEY')
       console.log('user: ', user)
       if (user) {
