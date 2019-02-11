@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from './redux/action';
-import { Button } from './Components';
+// import { Button } from './Components';
+// import { goHome } from './navigation';
 
 class Home extends Component {
   componentDidMount() {
@@ -18,7 +19,7 @@ class Home extends Component {
       <View>
         <Text>{message}</Text>
         <Text>{count}</Text>
-        <Button>Luis</Button>
+        {/* <Button onPress={() => goHome()}>Luis</Button> */}
       </View>
     );
   }
