@@ -1,4 +1,4 @@
-import { Navigation } from 'react-native-navigation'
+import { Navigation } from 'react-native-navigation';
 
 export const goHome = () => Navigation.setRoot({
   root: {
@@ -8,12 +8,12 @@ export const goHome = () => Navigation.setRoot({
         {
           component: {
             name: 'Home',
-          }
-        }
+          },
+        },
       ],
-    }
-  }
-})
+    },
+  },
+});
 
 export const goToAuth = () => Navigation.setRoot({
   root: {
@@ -23,9 +23,9 @@ export const goToAuth = () => Navigation.setRoot({
         {
           component: {
             name: 'Auth',
-          }
-        }
+          },
+        },
       ],
-    }
-  }
-})
+    },
+  },
+});
