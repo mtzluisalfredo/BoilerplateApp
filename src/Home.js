@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from './redux/action';
-// import { Button } from './Components';
-// import { goHome } from './navigation';
+
 
 class Home extends Component {
   componentDidMount() {
@@ -19,7 +19,7 @@ class Home extends Component {
       <View>
         <Text>{message}</Text>
         <Text>{count}</Text>
-        {/* <Button onPress={() => goHome()}>Luis</Button> */}
+        <Icon name='rocket' size={30} color='#900' />
       </View>
     );
   }

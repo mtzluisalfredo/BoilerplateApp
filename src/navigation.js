@@ -1,57 +1,54 @@
-import { Navigation } from 'react-native-navigation';
+// import { Navigation } from 'react-native-navigation';
+import { setRoot } from './services/navigation';
+import iconsApp from './Icons';
 
-export const goHome = () => Navigation.setRoot({
-  root: {
-    bottomTabs: {
-      children: [{
-        stack: {
-          children: [{
+const { iconsMap, iconsLoaded } = iconsApp();
+
+export const goHome = () => iconsLoaded.then(() => {
+  setRoot('bottomTabs', 'App', [
+    {
+      stack: {
+        children: [
+          {
             component: {
               name: 'Home',
-              passProps: {
-                text: 'This is tab 1',
+              options: {
+                bottomTab: {
+                  fontSize: 14,
+                  text: 'Home',
+                  icon: iconsMap['location-city'],
+                },
               },
             },
-          }],
-          options: {
-            bottomTab: {
-              text: 'Tab 1',
-              icon: require('./img/counter.png'),
-              testID: 'FIRST_TAB_BAR_BUTTON',
-            },
           },
-        },
+        ],
       },
-      {
-        component: {
-          name: 'Auth',
-          passProps: {
-            text: 'This is tab 2',
-          },
-          options: {
-            bottomTab: {
-              text: 'Tab 2',
-              icon: require('./img/counter.png'),
-              testID: 'SECOND_TAB_BAR_BUTTON',
+    },
+    {
+      stack: {
+        children: [
+          {
+            component: {
+              name: 'Auth',
+              options: {
+                bottomTab: {
+                  fontSize: 14,
+                  text: 'Counter',
+                  icon: iconsMap['user-circle'],
+                },
+              },
             },
           },
-        },
-      }],
+        ],
+      },
     },
-  },
+  ]);
 });
 
-export const goToAuth = () => Navigation.setRoot({
-  root: {
-    stack: {
-      id: 'Auth',
-      children: [
-        {
-          component: {
-            name: 'Auth',
-          },
-        },
-      ],
+export const goToAuth = () => setRoot('stack', 'SignIn', [
+  {
+    component: {
+      name: 'Auth',
     },
   },
-});
+]);
