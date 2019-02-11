@@ -1,31 +1,54 @@
-import { Navigation } from 'react-native-navigation';
+// import { Navigation } from 'react-native-navigation';
+import { setRoot } from './services/navigation';
+import iconsApp from './Icons';
 
-export const goHome = () => Navigation.setRoot({
-  root: {
-    stack: {
-      id: 'Home',
-      children: [
-        {
-          component: {
-            name: 'Home',
+const { iconsMap, iconsLoaded } = iconsApp();
+
+export const goHome = () => iconsLoaded.then(() => {
+  setRoot('bottomTabs', 'App', [
+    {
+      stack: {
+        children: [
+          {
+            component: {
+              name: 'Home',
+              options: {
+                bottomTab: {
+                  fontSize: 14,
+                  text: 'Home',
+                  icon: iconsMap['location-city'],
+                },
+              },
+            },
           },
-        },
-      ],
+        ],
+      },
     },
-  },
+    {
+      stack: {
+        children: [
+          {
+            component: {
+              name: 'Auth',
+              options: {
+                bottomTab: {
+                  fontSize: 14,
+                  text: 'Counter',
+                  icon: iconsMap['user-circle'],
+                },
+              },
+            },
+          },
+        ],
+      },
+    },
+  ]);
 });
 
-export const goToAuth = () => Navigation.setRoot({
-  root: {
-    stack: {
-      id: 'Auth',
-      children: [
-        {
-          component: {
-            name: 'Auth',
-          },
-        },
-      ],
+export const goToAuth = () => setRoot('stack', 'SignIn', [
+  {
+    component: {
+      name: 'Auth',
     },
   },
-});
+]);
