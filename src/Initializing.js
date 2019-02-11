@@ -4,7 +4,6 @@ import {
   Text,
   StyleSheet,
 } from 'react-native';
-
 import { goToAuth, goHome } from './navigation';
 
 const styles = StyleSheet.create({
