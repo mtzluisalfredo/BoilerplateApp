@@ -2,6 +2,7 @@ import { types } from '../action/type';
 
 const initialState = {
   message: null,
+  count: 0,
 };
 
 const defaultReducer = (state = initialState, action) => {
@@ -10,6 +11,7 @@ const defaultReducer = (state = initialState, action) => {
       return {
         ...state,
         message: 'Hello redux',
+        count: state.count + 1,
       };
     }
 

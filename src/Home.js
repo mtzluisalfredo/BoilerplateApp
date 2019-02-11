@@ -11,10 +11,11 @@ class Home extends Component {
   }
 
   render() {
-    const { message } = this.props;
+    const { message , count} = this.props;
     return (
       <View>
         <Text>{message}</Text>
+        <Text>{count}</Text>
       </View>
     );
   }
@@ -22,6 +23,7 @@ class Home extends Component {
 
 const mapStateToProps = state => ({
   message: state.defaultReducer.message,
+  count: state.defaultReducer.count,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(ActionCreators, dispatch);
