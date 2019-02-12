@@ -1,8 +1,5 @@
 import Button from './Button';
 import { P, H1 } from './Text';
+import MyTextInput from './MyTextInput';
 
-export {
-  Button,
-  P,
-  H1,
-};
+export { MyTextInput, Button, P, H1 };

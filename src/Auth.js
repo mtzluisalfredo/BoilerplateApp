@@ -1,30 +1,14 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { Component } from 'react';
+import { Alert } from 'react-native';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
+import MyForm from './Components/MyForm';
 
-export default class Auth extends React.Component {
-  static get options() {
-    return {
-      topBar: {
-        title: {
-          text: 'Home',
-        },
-      },
-    };
-  }
-
+export default class Auth extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Hello from Auth Fix prettier..</Text>
-      </View>
+      <MyForm
+        onSubmit={values => Alert.alert('Submitted!', JSON.stringify(values))}
+      />
     );
   }
 }
