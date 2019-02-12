@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-} from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -27,7 +23,7 @@ export default class Auth extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Hello from Auth screen..</Text>
+        <Text>Hello from Auth Fix prettier..</Text>
       </View>
     );
   }
