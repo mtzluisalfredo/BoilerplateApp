@@ -1,5 +1,6 @@
+import Container from './Container';
 import Button from './Button';
 import { P, H1 } from './Text';
 import MyTextInput from './MyTextInput';
 
-export { MyTextInput, Button, P, H1 };
+export { Container, MyTextInput, Button, P, H1 };

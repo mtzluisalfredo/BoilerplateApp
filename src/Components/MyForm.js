@@ -9,11 +9,11 @@ import styles from './MyForm.styles';
 /**
  * Automatically adds the dashes required by the specified phone format and limits the input to ten characters
  */
-const phoneFormatter = number => {
-  if (!number) return '';
+const phoneFormatter = entryNumber => {
+  if (!entryNumber) return '';
   // NNN-NNN-NNNN
   const splitter = /.{1,3}/g;
-  number = number.substring(0, 10);
+  const number = entryNumber.substring(0, 10);
   return (
     number
       .substring(0, 7)

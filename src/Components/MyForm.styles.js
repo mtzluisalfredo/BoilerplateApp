@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    padding: 45,
+    padding: 5,
   },
   formSubmit: {
     alignSelf: 'center',

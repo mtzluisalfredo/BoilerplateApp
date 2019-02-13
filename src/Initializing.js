@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-} from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { goToAuth, goHome } from './navigation';
 
 const styles = StyleSheet.create({
@@ -19,7 +15,7 @@ const styles = StyleSheet.create({
 export default class Initializing extends React.Component {
   async componentDidMount() {
     try {
-      const user = 1;
+      const user = 0;
       if (user) {
         goHome();
       } else {
