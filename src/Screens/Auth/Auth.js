@@ -19,13 +19,13 @@ export class Auth extends Component {
     const { a } = this.state;
     return (
       <Container flex={1}>
-        <Icon name="ios-rocket" size={60} color="#0a0b3b" />
+        <Icon name='ios-rocket' size={60} color='#0a0b3b' />
         <Container
           borderTop={30}
           absolute
           bottom
-          bgColor="#0a0b3b"
-          height="65%"
+          bgColor='#0a0b3b'
+          height='65%'
         >
           <Text>{a}</Text>
         </Container>
