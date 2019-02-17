@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Label, Item, Input, Button, Text } from 'native-base';
+import { Item, Input, Button, Text } from 'native-base';
 import { Field, reduxForm } from 'redux-form';
 import { ScrollView } from 'react-native';
 
@@ -23,16 +23,19 @@ const validate = values => {
   return error;
 };
 class MyForm extends Component {
-  renderInput = ({ input, meta: { error } }) => {
+  renderInput = ({ style, label, type, input, meta: { error }, ...otherProps }) => {
+    const inputProps = { ...input, ...otherProps };
     let hasError = false;
+
     if (error !== undefined) {
       hasError = true;
     }
+
     return (
-      <Item floatingLabel error={hasError}>
-        <Label htmlFor={input.name}>Username</Label>
-        <Input {...input} />
-        {hasError ? <Text>{error}</Text> : <Text />}
+      <Item error={hasError}>
+        {/* <Label htmlFor={input.name}>{label}</Label> */}
+        <Input {...inputProps} />
+        {/* {hasError && <Text>{error}</Text>} */}
       </Item>
     );
   }
@@ -41,8 +44,17 @@ class MyForm extends Component {
     const { reset } = this.props;
     return (
       <ScrollView>
-        <Field name='email' component={this.renderInput} />
-        <Field name='password' component={this.renderInput} />
+        <Field
+          name='email'
+          label='Email'
+          component={this.renderInput}
+        />
+        <Field
+          name='password'
+          label='Contraseña'
+          secureTextEntry
+          component={this.renderInput}
+        />
         <Button block primary onPress={reset}>
           <Text>Submit</Text>
         </Button>
