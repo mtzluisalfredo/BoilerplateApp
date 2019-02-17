@@ -32,7 +32,7 @@ class MyForm extends Component {
     }
 
     return (
-      <Item error={hasError}>
+      <Item style={{ backgroundColor: 'gray', marginLeft: 0, marginTop: 10 }} error={hasError}>
         {/* <Label htmlFor={input.name}>{label}</Label> */}
         <Input {...inputProps} />
         {/* {hasError && <Text>{error}</Text>} */}
@@ -43,7 +43,7 @@ class MyForm extends Component {
   render() {
     const { reset } = this.props;
     return (
-      <ScrollView>
+      <ScrollView style={{ padding: 10, paddingBottom: 0 }}>
         <Field
           name='email'
           label='Email'
