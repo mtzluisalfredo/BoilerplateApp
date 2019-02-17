@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-// import { Text, View } from 'react-native';
-import { View, Text } from 'native-base';
+import { ScrollView } from 'react-native';
+import { Text } from 'native-base';
 // import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // import Icon from 'react-native-vector-icons/Ionicons';
@@ -20,14 +20,10 @@ export class Auth extends Component {
   render() {
     const { title } = this.state;
     return (
-      <View style={{ flex: 1, backgroundColor: '#3897FF' }}>
-        <View style={{ position: 'absolute', top: 0, width: '100%', height: '35%' }}>
-          <Text>{title}</Text>
-        </View>
-        <View style={{ position: 'absolute', bottom: 0, width: '100%', backgroundColor: 'white', height: '65%' }}>
-          <MyForm />
-        </View>
-      </View>
+      <ScrollView contentContainerStyle={{ flex: 1, backgroundColor: '#3897FF' }} scrollEnabled={false}>
+        <Text>{title}</Text>
+        <MyForm />
+      </ScrollView>
     );
   }
 }
