@@ -36,29 +36,28 @@ const Container = styled.View`
     justify-content: center;
   `};
 
+  ${is('padding')`
+    padding: ${props => props.padding}px;
+  `};
+
   ${is('paddingHorizontal')`
-    padding-left: ${props => props.paddingHorizontal}px;
-    padding-right: ${props => props.paddingHorizontal}px;
+    paddingHorizontal: ${props => props.paddingHorizontal}px;
   `};
 
   ${is('paddingVertical')`
-    padding-top: ${props => props.paddingVertical}px;
-    padding-bottom: ${props => props.paddingVertical}px;
+    paddingVertical: ${props => props.paddingVertical}px;
   `};
 
   ${is('marginHorizontal')`
-    margin-left: ${props => props.marginHorizontal}px;
-    margin-right: ${props => props.marginHorizontal}px;
+    marginHorizontal: ${props => props.marginHorizontal}px;
   `};
 
   ${is('marginVertical')`
-    margin-top: ${props => props.marginVertical}px;
-    margin-bottom: ${props => props.marginVertical}px;
+    marginVertical: ${props => props.marginVertical}px;
   `};
 `;
 
 Container.defaultProps = {
-  flex: 0,
   'background-color': '#EEF1F7',
   width: '100%',
 };

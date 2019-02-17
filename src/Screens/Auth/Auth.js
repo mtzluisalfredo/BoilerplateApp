@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+// import { Text, View } from 'react-native';
+import { View, Text } from 'native-base';
 // import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Icon from 'react-native-vector-icons/Ionicons';
-import { Container } from '../../Components';
+// import Icon from 'react-native-vector-icons/Ionicons';
+// import { Container, MyForm } from '../../Components';
+import { MyForm } from '../../Components';
 
 export class Auth extends Component {
   static propTypes = {};
@@ -18,25 +20,17 @@ export class Auth extends Component {
   render() {
     const { a } = this.state;
     return (
-      <Container flex={1}>
-        <Icon name='ios-rocket' size={60} color='#0a0b3b' />
-        <Container
-          borderTop={30}
-          absolute
-          bottom
-          bgColor='#0a0b3b'
-          height='65%'
-        >
-          <Text>{a}</Text>
-        </Container>
-      </Container>
+      <View style={{ flex: 1, backgroundColor: '#3897FF' }}>
+        <Text>{a}</Text>
+        <View style={{ position: 'absolute', bottom: 0, width: '100%', backgroundColor: 'white', height: '65%' }}>
+          <MyForm />
+        </View>
+      </View>
     );
   }
 }
 
-const mapStateToProps = state => {
-  console.log('TCL: state', state);
-  console.log('TCL: state', state);
+const mapStateToProps = () => {
   return {};
 };
 

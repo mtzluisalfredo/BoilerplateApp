@@ -3,17 +3,16 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   input: {
     height: 30,
-    padding: 5,
+    color: '#FFFFFF',
   },
   inputContainer: {
     borderBottomWidth: 1,
-    borderColor: 'rgba(0, 0, 0, 0.4)',
-    marginTop: 20,
+    borderColor: 'white',
   },
   valid: {
-    borderColor: '#53E69D',
+    borderColor: 'green',
   },
   invalid: {
-    borderColor: '#F55E64',
+    borderColor: 'red',
   },
 });

@@ -7,7 +7,8 @@
     "test": "jest",
     "android": "cd ./android && ./gradlew app:assembleDebug && ./gradlew installDebug",
     "lint-js": "eslint *.js **/*.js",
-    "lint": "npm run lint-js"
+    "lint": "npm run lint-js",
+    "rn-rc": "react-native start --reset-cache"
   },
   "lint-staged": {
     "*.{js,jsx}": [

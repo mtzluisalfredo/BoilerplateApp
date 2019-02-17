@@ -24,6 +24,7 @@ export default function MyTextInput(props) {
         onFocus={input.onFocus}
         value={input.value}
         style={styles.input}
+        underlineColorAndroid='transparent'
       />
     </View>
   );
