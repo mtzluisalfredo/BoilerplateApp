@@ -13,15 +13,17 @@ export class Auth extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      a: 7,
+      title: 'Hello world',
     };
   }
 
   render() {
-    const { a } = this.state;
+    const { title } = this.state;
     return (
       <View style={{ flex: 1, backgroundColor: '#3897FF' }}>
-        <Text>{a}</Text>
+        <View style={{ position: 'absolute', top: 0, width: '100%', backgroundColor: 'gray', height: '35%' }}>
+          <Text>{title}</Text>
+        </View>
         <View style={{ position: 'absolute', bottom: 0, width: '100%', backgroundColor: 'white', height: '65%' }}>
           <MyForm />
         </View>
