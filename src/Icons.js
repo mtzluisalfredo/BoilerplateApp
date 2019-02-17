@@ -46,7 +46,6 @@ const iconsApp = () => {
       resolve(true);
     });
   });
-  /* eslint-enable */
   return { iconsMap, iconsLoaded };
 };
 

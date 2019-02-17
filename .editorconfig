@@ -16,6 +16,7 @@ trim_trailing_whitespace = false
 
 [*.js]
 trim_trailing_whitespace = true
+quote_type = single
 
 [{Makefile,todo}]
 indent_style = tab
