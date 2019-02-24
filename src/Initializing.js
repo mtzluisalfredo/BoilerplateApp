@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
 export default class Initializing extends React.Component {
   async componentDidMount() {
     try {
-      const user = 0;
+      const user = 1;
       if (user) {
         goHome();
       } else {
