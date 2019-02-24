@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Platform } from 'react-native';
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import Interactable from 'react-native-interactable';
 
 // eslint-disable-next-line
