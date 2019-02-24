@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Item, Input, Button, Text, Grid, Row } from 'native-base';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { Field, reduxForm } from 'redux-form';
 import { View } from 'react-native';
 import { ifIphoneX } from '../helpers';
@@ -34,9 +35,18 @@ class MyForm extends Component {
     }
 
     return (
-      <Item style={{ backgroundColor: '#F5F7FB', marginLeft: 0, marginVertical: 5 }} error={hasError}>
+      <Item
+        style={{
+          backgroundColor: '#F5F7FB',
+          marginLeft: 0,
+          marginVertical: 5,
+          paddingHorizontal: 5,
+        }}
+        error={hasError}
+      >
         {/* <Label htmlFor={input.name}>{label}</Label> */}
         <Input {...inputProps} />
+        {hasError && <Icon name='warning' size={20} color='#f9e154' />}
         {/* {hasError && <Text>{error}</Text>} */}
       </Item>
     );

@@ -67,5 +67,10 @@ module.exports = {
       }
     ],
     "jsx-a11y/aria-role": [0]
+  },
+  settings: {
+    "import/resolver": {
+      "babel-module": {}
+    }
   }
 };

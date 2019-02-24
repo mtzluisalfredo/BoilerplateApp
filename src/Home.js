@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
+import { Grid, Row } from 'native-base';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from './redux/action';
 
@@ -14,24 +14,34 @@ class Home extends Component {
   }
 
   render() {
-    const { message, count } = this.props;
+    // const { message, count } = this.props;
     return (
-      <View>
-        <Text>{message}</Text>
-        <Text>{count}</Text>
-        <Icon name='rocket' size={30} color='#900' />
-      </View>
+      <Grid>
+        <Row size={65}><Text>Luis</Text></Row>
+      </Grid>
     );
   }
 }
 
 
 Home.propTypes = {
-  count: PropTypes.number,
-  message: PropTypes.string,
+  // count: PropTypes.number,
+  // message: PropTypes.string,
   triggerDefault: PropTypes.func,
 };
 
+Home.options = () => {
+  return {
+    topBar: {
+      elevation: 0,
+      drawBehind: false,
+      background: {
+        color: 'transparent',
+      },
+
+    },
+  };
+};
 const mapStateToProps = state => {
   return {
     message: state.defaultReducer.message,

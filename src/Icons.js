@@ -25,9 +25,8 @@ const icons = {
 const defaultIconProvider = Ionicons;
 const iconsApp = () => {
   const iconsMap = {};
-  /* eslint-disable */
   const iconsLoaded = new Promise(resolve => {
-    new Promise.all(
+    Promise.all(
       Object.keys(icons).map(iconName => {
         const Provider = icons[iconName][2] || defaultIconProvider; // Ionicons
         return Provider.getImageSource(

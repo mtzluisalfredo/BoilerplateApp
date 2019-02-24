@@ -3,8 +3,8 @@ import { ScrollView } from 'react-native';
 // import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 // import Icon from 'react-native-vector-icons/Ionicons';
-// import { Container, MyForm } from '../../Components';
-import { MyForm } from '../../Components';
+// import { Container, MyForm } from '../../components';
+import { MyForm } from 'components';
 
 export class Auth extends Component {
   static propTypes = {};
