@@ -8,9 +8,7 @@ import {
   SafeAreaView,
   Animated,
   Platform,
-  TouchableOpacity,
 } from 'react-native';
-import { Icon } from 'native-base';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
@@ -91,7 +89,7 @@ class Home extends Component {
 
   render() {
     return (
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#f7f7f7' }}>
         <View style={{ flex: 1 }}>
           <ScrollView
             scrollEventThrottle={16}
@@ -99,7 +97,7 @@ class Home extends Component {
               { nativeEvent: { contentOffset: { y: this.scrollY } } },
             ])}
           >
-            <View style={{ flex: 1, backgroundColor: 'white' }}>
+            <View style={{ flex: 1 }}>
               <Text
                 style={{
                   fontSize: 24,
@@ -131,192 +129,184 @@ class Home extends Component {
                   <View
                     style={{
                       width: width - 40,
-                      height: 195,
+                      height: 150,
                       marginTop: 20,
                       backgroundColor: 'white',
-                      borderColor: '#e0e0e0',
-                      borderWidth: 1,
+                      // borderColor: '#e0e0e0',
+                      // borderWidth: 1,
                       borderRadius: 5,
+                      padding: 10,
                       // overflow: 'hidden',
+                      shadowColor: '#000',
+                      shadowOffset: { width: 0, height: 0 },
+                      shadowOpacity: 0.1,
+                      shadowRadius: 5,
+                      elevation: 2,
                     }}
                   >
                     <View
                       style={{
-                        flexDirection: 'row',
-                        height: 65,
+                        height: 80,
+                        borderBottomWidth: 1,
+                        borderBottomColor: '#e0e0e0',
+                        justifyContent: 'center',
                       }}
                     >
                       <View
                         style={{
-                          flex: 4,
-                          alignItems: 'center',
+                          flex: 1,
                           flexDirection: 'row',
-                          padding: 5,
+                          justifyContent: 'center',
                         }}
                       >
-                        <View>
-                          <View
+                        <View
+                          style={{
+                            backgroundColor: '#7BC6D7',
+                            width: 70,
+                            height: 70,
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            borderRadius: 5,
+                          }}
+                        >
+                          <Text
                             style={{
-                              borderRadius: 25,
-                              backgroundColor: '#9294fb',
-                              height: 50,
-                              width: 50,
-                              alignItems: 'center',
-                              justifyContent: 'center',
+                              color: 'white',
+                              fontWeight: 'bold',
+                              fontSize: 24,
                             }}
                           >
-                            <Text
-                              style={{
-                                fontSize: 20,
-                                fontWeight: 'bold',
-                                color: 'white',
-                              }}
-                            >
-                              LA
-                            </Text>
-                          </View>
-                        </View>
-                        <View style={{ flex: 4, marginLeft: 5 }}>
-                          <Text style={{ fontWeight: '500' }}>
-                            Luis Alfredo MArtinez Rees Fondeo directo
+                            LA
                           </Text>
                         </View>
-                        <TouchableOpacity
+                        <View
                           style={{
                             flex: 1,
-                            borderColor: '#e0e0e0',
-                            borderWidth: 1,
-                            borderRadius: 5,
-                            height: '80%',
-                            alignItems: 'center',
+                            marginLeft: 5,
+                            height: 70,
                             justifyContent: 'center',
                           }}
-                          onPress={() => {}}
                         >
-                          <Icon
-                            name='ios-cart'
-                            style={{ color: '#6d788a' }}
-                            size={40}
-                          />
-                        </TouchableOpacity>
+                          <Text
+                            style={{
+                              fontSize: 17,
+                              fontWeight: 'bold',
+                              color: '#666680',
+                            }}
+                          >
+                            Luis Alfredo Martinez Reyes Luis
+                          </Text>
+                          <Text
+                            style={{
+                              fontWeight: 'bold',
+                              fontSize: 16,
+                              color: '#617FD8',
+                            }}
+                          >
+                            $128999.00
+                          </Text>
+                          <Text
+                            style={{
+                              fontWeight: '600',
+                              fontSize: 14,
+                              color: '#A1A1B0',
+                            }}
+                          >
+                            Plazo de 360 dias
+                          </Text>
+                        </View>
                       </View>
                     </View>
-
-                    <View
-                      style={{
-                        flexDirection: 'row',
-                        height: 65,
-                        alignItems: 'center',
-                        padding: 5,
-                        paddingRight: 0,
-                      }}
-                    >
-                      <View style={{ flex: 1, marginRight: 10 }}>
-                        <View
-                          style={{ flexDirection: 'row', alignItems: 'center' }}
-                        >
-                          <View
-                            style={{
-                              flex: 4,
-                              justifyContent: 'center',
-                              backgroundColor: 'gray',
-                              borderRadius: 10,
-                              height: 10,
-                            }}
-                          >
-                            <View
-                              style={{
-                                backgroundColor: 'red',
-                                width: '30%',
-                                height: 10,
-                                borderRadius: 10,
-                              }}
-                            />
-                          </View>
-                          <View
-                            style={{
-                              flex: 2,
-                              justifyContent: 'center',
-                              alignItems: 'flex-end',
-                            }}
-                          >
-                            <Text>$121212.12</Text>
-                          </View>
-                        </View>
-                        <Text>Luis</Text>
-                      </View>
+                    <View style={{ height: 5, width: '100%', backgroundColor: '#A8C4EB', borderRadius: 10 }}>
+                      <View style={{ height: 5, width: '50%', backgroundColor: '#627FD9', borderRadius: 10 }} />
                     </View>
                     <View
                       style={{
                         flex: 1,
-                        height: 65,
                         flexDirection: 'row',
-                        borderTopWidth: 1,
-                        borderColor: '#eef0f2',
                       }}
                     >
                       <View
                         style={{
                           flex: 1,
-                          paddingVertical: 10,
-                          paddingHorizontal: 5,
+                          height: 50,
                           justifyContent: 'center',
+                          alignItems: 'center',
                         }}
                       >
-                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                          <Icon
-                            name='ios-calendar'
-                            style={{ color: '#6d788a' }}
-                            size={5}
-                          />
-                          <Text>
-                            360 dias
+                        <View
+                          style={{
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                          }}
+                        >
+                          <Text style={{ color: '#A1A1B0' }}>Oportunidad</Text>
+                          <Text
+                            style={{
+                              fontWeight: 'bold',
+                              color: '#696982',
+                              fontSize: 16,
+                            }}
+                          >
+                            1029
                           </Text>
                         </View>
-                        <View style={{ alignItems: 'center' }}><Text>Vencimiento</Text></View>
                       </View>
                       <View
                         style={{
                           flex: 1,
-                          paddingVertical: 10,
-                          paddingHorizontal: 5,
+                          height: 50,
                           justifyContent: 'center',
+                          alignItems: 'center',
                           borderLeftWidth: 1,
                           borderRightWidth: 1,
-                          borderColor: '#eef0f2',
+                          borderColor: 'white',
                         }}
                       >
-                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                          <Icon
-                            name='logo-usd'
-                            style={{ color: '#6d788a' }}
-                            size={5}
-                          />
-                          <Text>
-                            898
-                          </Text>
-                        </View>
-                        <View style={{ alignItems: 'center' }}><Text>Oportunidad</Text></View>
-                      </View>
-                      <View
-                        style={{
-                          flex: 1,
-                          paddingVertical: 10,
-                          paddingHorizontal: 5,
-                          justifyContent: 'center',
-                        }}
-                      >
-                        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                          <Icon
-                            name='ios-trending-up'
-                            style={{ color: '#6d788a' }}
-                            size={5}
-                          />
-                          <Text>
+                        <View
+                          style={{
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                          }}
+                        >
+                          <Text style={{ color: '#A1A1B0' }}>Retorno</Text>
+                          <Text
+                            style={{
+                              fontWeight: 'bold',
+                              color: '#68B01F',
+                              fontSize: 16,
+                            }}
+                          >
                             17%
                           </Text>
                         </View>
-                        <View style={{ alignItems: 'center' }}><Text>Vencimiento</Text></View>
+                      </View>
+
+                      <View
+                        style={{
+                          flex: 1,
+                          height: 50,
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                        }}
+                      >
+                        <View
+                          style={{
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                          }}
+                        >
+                          <Text style={{ color: '#A1A1B0' }}>Fondeada</Text>
+                          <Text
+                            style={{
+                              fontWeight: 'bold',
+                              color: '#496BD4',
+                              fontSize: 16,
+                            }}
+                          >
+                            47%
+                          </Text>
+                        </View>
                       </View>
                     </View>
                   </View>
@@ -339,9 +329,8 @@ Home.options = () => {
     topBar: {
       elevation: 0,
       drawBehind: false,
-      background: {
-        color: 'transparent',
-      },
+      noBorder: true,
+      background: { color: '#f7f7f7' },
     },
   };
 };
