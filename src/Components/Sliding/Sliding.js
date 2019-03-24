@@ -6,7 +6,7 @@ import Interactable from 'react-native-interactable';
 // eslint-disable-next-line
 import Card from './Card';
 
-export default class Swipeable extends React.Component {
+export default class Sliding extends React.Component {
   static propTypes = {
     // eslint-disable-next-line react/forbid-prop-types
     cards: PropTypes.array.isRequired,
@@ -24,9 +24,9 @@ export default class Swipeable extends React.Component {
 
   state = {
     cardWidth: 0,
-    swipeableWidth: 0,
+    slidingWidth: 0,
     snapPoints: [],
-    swipeableBoundary: 0,
+    slidingBoundary: 0,
   };
 
   onLayout = e => {
@@ -34,15 +34,15 @@ export default class Swipeable extends React.Component {
     const { cards } = this.props;
 
     // calculate the width of a card
-    const cardWidth = containerWidth / Swipeable.ContainerToCardWidthRatio;
+    const cardWidth = containerWidth / Sliding.ContainerToCardWidthRatio;
     this.setState({ cardWidth });
 
-    // calculate total swipeable width
-    const swipeableWidth = cardWidth * cards.length;
-    this.setState({ swipeableWidth });
+    // calculate total sliding width
+    const slidingWidth = cardWidth * cards.length;
+    this.setState({ slidingWidth });
 
-    // calculate incrementation amount for snap points
-    const incrementAmountForOuterCards = cardWidth - (containerWidth - cardWidth) / 2 + Swipeable.HorizontalMargin;
+    // calculate the amount of increment for set points
+    const incrementAmountForOuterCards = cardWidth - (containerWidth - cardWidth) / 2 + Sliding.HorizontalMargin;
     const incrementAmountForInnerCards = cardWidth;
 
     // calculate snap points
@@ -59,13 +59,13 @@ export default class Swipeable extends React.Component {
     this.setState({ snapPoints });
 
     // calculate the swiping boundary
-    const swipeableBoundary = snapPoints[cards.length - 1].x - Swipeable.BoundaryPadding;
-    this.setState({ swipeableBoundary });
+    const slidingBoundary = snapPoints[cards.length - 1].x - Sliding.BoundaryPadding;
+    this.setState({ slidingBoundary });
   };
 
   render() {
     const { cards } = this.props;
-    const { cardWidth, snapPoints, swipeableBoundary, swipeableWidth } = this.state;
+    const { cardWidth, snapPoints, slidingBoundary, slidingWidth } = this.state;
     let cardsToRender;
 
     if (cardWidth > 0) {
@@ -90,18 +90,18 @@ export default class Swipeable extends React.Component {
           boundaries={
             Platform.OS === 'ios'
               ? {
-                left: swipeableBoundary,
-                right: Swipeable.BoundaryPadding,
-                bounce: Swipeable.BoundaryBounce,
+                left: slidingBoundary,
+                right: Sliding.BoundaryPadding,
+                bounce: Sliding.BoundaryBounce,
               }
-              : { bounce: Swipeable.BoundaryBounce }
+              : { bounce: Sliding.BoundaryBounce }
           }
           horizontalOnly
           animatedNativeDriver
           style={[
             // eslint-disable-next-line no-use-before-define
             styles.interactableContainer,
-            { width: swipeableWidth },
+            { width: slidingWidth },
           ]}
         >
           {cardsToRender}
@@ -114,7 +114,7 @@ export default class Swipeable extends React.Component {
 const styles = StyleSheet.create({
   interactableContainer: {
     flexDirection: 'row',
-    marginHorizontal: Swipeable.HorizontalMargin,
-    marginVertical: Swipeable.VerticalMargin,
+    marginHorizontal: Sliding.HorizontalMargin,
+    marginVertical: Sliding.VerticalMargin,
   },
 });

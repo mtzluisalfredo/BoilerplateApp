@@ -13,7 +13,7 @@ module.exports = {
     ],
     "arrow-parens": ["error", "as-needed"],
     "jsx-quotes": ["error", "prefer-single"],
-    "max-lines": ["error", { max: 350 }],
+    "max-lines": ["error", { max: 400 }],
     "max-len": ["error", 120],
     "object-curly-newline": ["error", { consistent: true }],
     camelcase: 0,
