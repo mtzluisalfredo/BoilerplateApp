@@ -12,7 +12,7 @@ import {
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
-import { Category } from 'components';
+import { Category, PercentageCircle } from 'components';
 import { ActionCreators } from './redux/action';
 
 const { width } = Dimensions.get('window');
@@ -97,7 +97,8 @@ class Home extends Component {
               { nativeEvent: { contentOffset: { y: this.scrollY } } },
             ])}
           >
-            <View style={{ flex: 1 }}>
+            <PercentageCircle radius={60} percent={1} color='red' />
+            <View style={{ flex: 1, marginBottom: 20 }}>
               <Text
                 style={{
                   fontSize: 24,
@@ -147,8 +148,8 @@ class Home extends Component {
                     <View
                       style={{
                         height: 80,
-                        borderBottomWidth: 1,
-                        borderBottomColor: '#e0e0e0',
+                        // borderBottomWidth: 1,
+                        // borderBottomColor: '#e0e0e0',
                         justifyContent: 'center',
                       }}
                     >

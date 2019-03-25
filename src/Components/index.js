@@ -8,5 +8,6 @@ import { Sliding } from './Sliding';
 import Category from './Category';
 import Tag from './Tag';
 import Homec from './Homec';
+import PercentageCircle from './PercentageCircle';
 
-export { Container, Category, Tag, Homec, Sliding, MyTextInput, MyForm, Button, P, H1 };
+export { Container, Category, Tag, PercentageCircle, Homec, Sliding, MyTextInput, MyForm, Button, P, H1 };
