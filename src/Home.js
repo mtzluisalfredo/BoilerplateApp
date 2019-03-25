@@ -173,7 +173,7 @@ class Home extends Component {
                     style={{
                       width: width - 20,
                       height: 150,
-                      marginTop: 20,
+                      marginTop: 10,
                       backgroundColor: 'white',
                       // borderColor: '#e0e0e0',
                       // borderWidth: 1,
