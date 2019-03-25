@@ -144,7 +144,7 @@ class Home extends Component {
                   paddingHorizontal: 10,
                 }}
               >
-                Nuevas oportunidadesy
+                Nuevas
               </Text> */}
 
               {/* <View style={{ height: 130, marginTop: 20 }}>
