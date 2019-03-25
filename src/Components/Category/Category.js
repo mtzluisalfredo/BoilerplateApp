@@ -3,14 +3,15 @@ import { View, Text, Image } from 'react-native';
 import PropTypes from 'prop-types';
 
 const Category = props => {
-  const { index, imageUri, name } = props;
+  const { imageUri, name, length, index } = props;
 
   return (
     <View
       style={{
         height: 130,
         width: 150,
-        marginLeft: index === 0 ? 20 : 10,
+        marginLeft: 10,
+        marginRight: index === length ? 10 : 0,
         borderWidth: 0.5,
         borderColor: '#dddddd',
       }}
@@ -29,8 +30,12 @@ const Category = props => {
 };
 
 Category.propTypes = {
-  imageUri: PropTypes.string,
+  imageUri: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.shape({}),
+  ]),
   index: PropTypes.number,
+  length: PropTypes.number,
   name: PropTypes.string,
 };
 

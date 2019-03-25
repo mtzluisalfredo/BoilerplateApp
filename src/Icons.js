@@ -20,6 +20,13 @@ const icons = {
 
   'home-map-marker': [30, '#bbb', MaterialCommunityIcons],
   'home-map-marker--active': [30, '#fff', MaterialCommunityIcons],
+
+  'filter-variant': [30, '#bbb', MaterialCommunityIcons],
+  'filter-variant--active': [30, '#fff', MaterialCommunityIcons],
+  'ios-arrow-down': [30, '#bbb', Ionicons],
+  'ios-arrow-down--active': [30, '#fff', Ionicons],
+
+
 };
 
 const defaultIconProvider = Ionicons;

@@ -8,11 +8,12 @@ import {
   SafeAreaView,
   Animated,
   Platform,
+  TouchableOpacity,
 } from 'react-native';
 import { connect } from 'react-redux';
+import { Navigation } from 'react-native-navigation';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
-import { Category, PercentageCircle } from 'components';
 import { ActionCreators } from './redux/action';
 
 const { width } = Dimensions.get('window');
@@ -85,11 +86,49 @@ class Home extends Component {
   componentDidMount() {
     const { triggerDefault } = this.props;
     triggerDefault();
+    this.navigationEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentWillUnmount() {
+    // Not mandatory
+    if (this.navigationEventListener) {
+      this.navigationEventListener.remove();
+    }
+  }
+
+  navigationButtonPressed = ({ buttonId }) => {
+    Navigation.showModal({
+      stack: {
+        children: [{
+          component: {
+            name: 'Filters',
+            passProps: {
+              text: 'stack with one child',
+              buttonId,
+            },
+          },
+        }],
+      },
+    });
+  }
+
+  goDetail = (item, index) => {
+    const { componentId } = this.props;
+
+    Navigation.push(componentId, {
+      component: {
+        name: 'Detail',
+        passProps: {
+          item,
+          index,
+        },
+      },
+    });
   }
 
   render() {
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: '#f7f7f7' }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#f0f1f8' }}>
         <View style={{ flex: 1 }}>
           <ScrollView
             scrollEventThrottle={16}
@@ -97,39 +136,42 @@ class Home extends Component {
               { nativeEvent: { contentOffset: { y: this.scrollY } } },
             ])}
           >
-            <PercentageCircle radius={60} percent={1} color='red' />
             <View style={{ flex: 1, marginBottom: 20 }}>
-              <Text
+              {/* <Text
                 style={{
                   fontSize: 24,
                   fontWeight: '700',
-                  paddingHorizontal: 20,
+                  paddingHorizontal: 10,
                 }}
               >
                 Nuevas oportunidades
-              </Text>
+              </Text> */}
 
-              <View style={{ height: 130, marginTop: 20 }}>
+              {/* <View style={{ height: 130, marginTop: 20 }}>
                 <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                   {Cards.map((item, index) => (
                     <Category
+                      key={`${item.title}-Category`}
                       imageUri={{
                         uri: item.imageUrl,
                       }}
                       name={item.title}
+                      length={cardsLength}
                       index={index}
                     />
                   ))}
                 </ScrollView>
-              </View>
-              <View style={{ marginTop: 20, paddingHorizontal: 20 }}>
+              </View> */}
+              <View style={{ marginTop: 20, paddingHorizontal: 10 }}>
                 <Text style={{ fontSize: 24, fontWeight: '700' }}>
-                  Las mejores oportunides para invertir
+                  Oportunides para invertir
                 </Text>
-                {Cards.map(() => (
-                  <View
+                {Cards.map((item, index) => (
+                  <TouchableOpacity
+                    key={`${item.title}-card`}
+                    onPress={() => this.goDetail(item, index)}
                     style={{
-                      width: width - 40,
+                      width: width - 20,
                       height: 150,
                       marginTop: 20,
                       backgroundColor: 'white',
@@ -310,7 +352,7 @@ class Home extends Component {
                         </View>
                       </View>
                     </View>
-                  </View>
+                  </TouchableOpacity>
                 ))}
               </View>
             </View>
@@ -322,19 +364,24 @@ class Home extends Component {
 }
 
 Home.propTypes = {
+  componentId: PropTypes.string,
   triggerDefault: PropTypes.func,
 };
 
 Home.options = () => {
   return {
+    layout: {
+      backgroundColor: '#f0f1f8',
+    },
     topBar: {
       elevation: 0,
       drawBehind: false,
       noBorder: true,
-      background: { color: '#f7f7f7' },
+      background: { color: '#f0f1f8' },
     },
   };
 };
+
 const mapStateToProps = state => {
   return {
     message: state.defaultReducer.message,
