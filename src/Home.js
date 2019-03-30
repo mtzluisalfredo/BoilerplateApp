@@ -2,21 +2,19 @@ import React, { Component } from 'react';
 import {
   Text,
   StatusBar,
-  Dimensions,
   View,
   ScrollView,
   SafeAreaView,
   Animated,
   Platform,
-  TouchableOpacity,
 } from 'react-native';
 import { connect } from 'react-redux';
 import { Navigation } from 'react-native-navigation';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from './redux/action';
+import { Card } from './components';
 
-const { width } = Dimensions.get('window');
 
 const Cards = [
   {
@@ -167,192 +165,7 @@ class Home extends Component {
                   Oportunides para invertir
                 </Text>
                 {Cards.map((item, index) => (
-                  <TouchableOpacity
-                    key={`${item.title}-card`}
-                    onPress={() => this.goDetail(item, index)}
-                    style={{
-                      width: width - 20,
-                      height: 150,
-                      marginTop: 10,
-                      backgroundColor: 'white',
-                      // borderColor: '#e0e0e0',
-                      // borderWidth: 1,
-                      borderRadius: 5,
-                      padding: 10,
-                      // overflow: 'hidden',
-                      shadowColor: '#000',
-                      shadowOffset: { width: 0, height: 0 },
-                      shadowOpacity: 0.1,
-                      shadowRadius: 5,
-                      elevation: 2,
-                    }}
-                  >
-                    <View
-                      style={{
-                        height: 80,
-                        // borderBottomWidth: 1,
-                        // borderBottomColor: '#e0e0e0',
-                        justifyContent: 'center',
-                      }}
-                    >
-                      <View
-                        style={{
-                          flex: 1,
-                          flexDirection: 'row',
-                          justifyContent: 'center',
-                        }}
-                      >
-                        <View
-                          style={{
-                            backgroundColor: '#7BC6D7',
-                            width: 70,
-                            height: 70,
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            borderRadius: 5,
-                          }}
-                        >
-                          <Text
-                            style={{
-                              color: 'white',
-                              fontWeight: 'bold',
-                              fontSize: 24,
-                            }}
-                          >
-                            LA
-                          </Text>
-                        </View>
-                        <View
-                          style={{
-                            flex: 1,
-                            marginLeft: 5,
-                            height: 70,
-                            justifyContent: 'center',
-                          }}
-                        >
-                          <Text
-                            style={{
-                              fontSize: 17,
-                              fontWeight: 'bold',
-                              color: '#666680',
-                            }}
-                          >
-                            Luis Alfredo Martinez Reyes Luis
-                          </Text>
-                          <Text
-                            style={{
-                              fontWeight: 'bold',
-                              fontSize: 16,
-                              color: '#617FD8',
-                            }}
-                          >
-                            $128999.00
-                          </Text>
-                          <Text
-                            style={{
-                              fontWeight: '600',
-                              fontSize: 14,
-                              color: '#A1A1B0',
-                            }}
-                          >
-                            Plazo de 360 dias
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                    <View style={{ height: 5, width: '100%', backgroundColor: '#A8C4EB', borderRadius: 10 }}>
-                      <View style={{ height: 5, width: '50%', backgroundColor: '#627FD9', borderRadius: 10 }} />
-                    </View>
-                    <View
-                      style={{
-                        flex: 1,
-                        flexDirection: 'row',
-                      }}
-                    >
-                      <View
-                        style={{
-                          flex: 1,
-                          height: 50,
-                          justifyContent: 'center',
-                          alignItems: 'center',
-                        }}
-                      >
-                        <View
-                          style={{
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                          }}
-                        >
-                          <Text style={{ color: '#A1A1B0' }}>Oportunidad</Text>
-                          <Text
-                            style={{
-                              fontWeight: 'bold',
-                              color: '#696982',
-                              fontSize: 16,
-                            }}
-                          >
-                            1029
-                          </Text>
-                        </View>
-                      </View>
-                      <View
-                        style={{
-                          flex: 1,
-                          height: 50,
-                          justifyContent: 'center',
-                          alignItems: 'center',
-                          borderLeftWidth: 1,
-                          borderRightWidth: 1,
-                          borderColor: 'white',
-                        }}
-                      >
-                        <View
-                          style={{
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                          }}
-                        >
-                          <Text style={{ color: '#A1A1B0' }}>Retorno</Text>
-                          <Text
-                            style={{
-                              fontWeight: 'bold',
-                              color: '#68B01F',
-                              fontSize: 16,
-                            }}
-                          >
-                            17%
-                          </Text>
-                        </View>
-                      </View>
-
-                      <View
-                        style={{
-                          flex: 1,
-                          height: 50,
-                          justifyContent: 'center',
-                          alignItems: 'center',
-                        }}
-                      >
-                        <View
-                          style={{
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                          }}
-                        >
-                          <Text style={{ color: '#A1A1B0' }}>Fondeada</Text>
-                          <Text
-                            style={{
-                              fontWeight: 'bold',
-                              color: '#496BD4',
-                              fontSize: 16,
-                            }}
-                          >
-                            47%
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
-                  </TouchableOpacity>
+                  <Card item={item} index={index} goDetail={() => this.goDetail()} />
                 ))}
               </View>
             </View>
@@ -367,6 +180,8 @@ Home.propTypes = {
   componentId: PropTypes.string,
   triggerDefault: PropTypes.func,
 };
+
+Home.defaultProps = {};
 
 Home.options = () => {
   return {

@@ -6,6 +6,10 @@ module.exports = {
     node: true
   },
   rules: {
+    "import/no-unresolved": [
+      2,
+      { "caseSensitive": false }
+    ],
     "arrow-body-style": [
       "error",
       "as-needed",
