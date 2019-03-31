@@ -1,4 +1,3 @@
-/* eslint-disable */
 import Card from './Card';
 import Sliding from './Sliding';
 

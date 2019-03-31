@@ -1,4 +1,3 @@
-/* eslint-disable */
 import Container from './Container';
 import Button from './Button';
 import { P, H1 } from './Text';
