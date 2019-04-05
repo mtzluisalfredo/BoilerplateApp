@@ -12,7 +12,6 @@ const Card = props => {
 
   return (
     <TouchableOpacity
-      key={`${item.title}-card`}
       onPress={() => goDetail(item, index)}
       style={styles.card}
     >
