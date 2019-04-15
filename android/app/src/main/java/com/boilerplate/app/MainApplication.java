@@ -1,14 +1,14 @@
-package com.boilerplateapp;
+package com.boilerplate.app;
 
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.wix.interactable.Interactable;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,13 +31,14 @@ public class MainApplication extends NavigationApplication {
 
     @Override
    public boolean isDebug() {
-        return BuildConfig.DEBUG;
+      return true;
     }
 
     protected List<ReactPackage> getPackages() {
        // Add additional packages you require here
         // No need to add RnnPackage and MainReactPackage
         return Arrays.<ReactPackage>asList(
+            new Interactable(),
             new VectorIconsPackage()
             // eg. new VectorIconsPackage()
        );

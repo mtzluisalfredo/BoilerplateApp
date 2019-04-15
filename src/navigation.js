@@ -18,6 +18,17 @@ export const goHome = () => iconsLoaded.then(() => {
                   text: 'Home',
                   icon: iconsMap['location-city'],
                 },
+                layout: {
+                  backgroundColor: '#f0f1f8',
+                },
+                topBar: {
+                  rightButtons: [
+                    {
+                      id: 'settingsButton',
+                      icon: iconsMap['filter-variant'],
+                    },
+                  ],
+                },
               },
             },
           },
@@ -31,6 +42,9 @@ export const goHome = () => iconsLoaded.then(() => {
             component: {
               name: 'Auth',
               options: {
+                layout: {
+                  backgroundColor: '#f0f1f8',
+                },
                 bottomTab: {
                   fontSize: 14,
                   text: 'Counter',

@@ -1,0 +1,24 @@
+{
+  "presets": [
+    "react-native",
+    "module:metro-react-native-babel-preset",
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": [
+          "./src"
+        ],
+        "extensions": [
+          ".js",
+          ".ios.js",
+          ".android.js"
+        ],
+        "alias": {
+          "components": "./src/components",
+        }
+      }
+    ]
+  ]
+}

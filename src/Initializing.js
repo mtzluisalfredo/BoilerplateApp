@@ -1,9 +1,5 @@
-import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-} from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
 import { goToAuth, goHome } from './navigation';
 
 const styles = StyleSheet.create({
@@ -16,25 +12,31 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
-export default class Initializing extends React.Component {
-  async componentDidMount() {
-    try {
-      const user = 1;
-      if (user) {
-        goHome();
-      } else {
-        goToAuth();
-      }
-    } catch (err) {
+
+async function initApp(user) {
+  try {
+    if (user) {
+      goHome();
+    } else {
       goToAuth();
     }
+  } catch (err) {
+    goToAuth();
   }
+}
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Loading...</Text>
-      </View>
-    );
-  }
+export default function Initializing() {
+  const [user] = useState(1);
+
+  // Similar to componentDidMount and componentDidUpdate:
+  useEffect(() => {
+    // Update the document title using the browser API
+    initApp(user);
+  }, []);
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.welcome}>Loading...</Text>
+    </View>
+  );
 }
