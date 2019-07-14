@@ -1,62 +1,68 @@
-// import { Navigation } from 'react-native-navigation';
+import { Navigation } from 'react-native-navigation';
 import { setRoot } from './services/navigation';
 import iconsApp from './Icons';
 
 const { iconsMap, iconsLoaded } = iconsApp();
 
 export const goHome = () => iconsLoaded.then(() => {
-  setRoot('bottomTabs', 'App', [
-    {
-      stack: {
-        children: [
-          {
-            component: {
-              name: 'Home',
-              options: {
-                bottomTab: {
-                  fontSize: 14,
-                  text: 'Home',
-                  icon: iconsMap['location-city'],
-                },
-                layout: {
-                  backgroundColor: '#f0f1f8',
-                },
-                topBar: {
-                  rightButtons: [
+  Navigation.setRoot({
+    root: {
+      sideMenu: {
+        left: {
+          component: {
+            id: 'SideDrawer',
+            name: 'Home',
+          },
+        },
+        center: {
+          bottomTabs: {
+            children: [
+              {
+                stack: {
+                  children: [
                     {
-                      id: 'settingsButton',
-                      icon: iconsMap['filter-variant'],
+                      component: {
+                        name: 'Home',
+                        options: {
+                          topBar: {
+                            visible: true,
+                            title: {
+                              text: 'Carousell',
+                              fontSize: 20,
+                              color: '#042C5C',
+                            },
+                            leftButtons: [
+                              {
+                                id: 'toggleDrawer',
+                                icon: iconsMap['location-city'],
+                                color: '#042C5C',
+                              },
+                            ],
+                          },
+                        },
+                      },
                     },
                   ],
+                  options: {
+                    bottomTab: {
+                      text: 'Home',
+                      testID: 'Home',
+                      fontSize: 15,
+                      icon: iconsMap['location-city'],
+                      textColor: '#fff',
+                    },
+                    bottomTabs: {
+                      backgroundColor: '#F8F9F9',
+                    },
+                  },
                 },
               },
-            },
+            ],
           },
-        ],
+        },
       },
     },
-    {
-      stack: {
-        children: [
-          {
-            component: {
-              name: 'Auth',
-              options: {
-                layout: {
-                  backgroundColor: '#f0f1f8',
-                },
-                bottomTab: {
-                  fontSize: 14,
-                  text: 'Counter',
-                  icon: iconsMap['user-circle'],
-                },
-              },
-            },
-          },
-        ],
-      },
-    },
-  ]);
+  });
 });
 
 export const goToAuth = () => setRoot('stack', 'SignIn', [

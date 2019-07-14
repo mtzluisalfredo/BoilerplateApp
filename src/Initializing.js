@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
+import { Navigation } from 'react-native-navigation';
 import { View, Text, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
 import { goToAuth, goHome } from './navigation';
 
 const styles = StyleSheet.create({
@@ -13,30 +15,89 @@ const styles = StyleSheet.create({
   },
 });
 
-async function initApp(user) {
-  try {
-    if (user) {
-      goHome();
-    } else {
+export class Initializing extends Component {
+  static propTypes = {};
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: 1,
+    };
+  }
+
+  componentDidMount() {
+    const { user } = this.state;
+    this.initApp(user);
+    this.navigationEventListener = Navigation.events().bindComponent(this);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { user } = this.state;
+    console.log('TCL: Initializing -> componentDidUpdate -> this', this.props);
+    // Uso tipico (no olvides de comparar los props):
+    if (user !== prevState.user) {
+      this.initApp(user);
+    }
+  }
+
+  componentWillUnmount() {
+    // Not mandatory
+    if (this.navigationEventListener) {
+      this.navigationEventListener.remove();
+    }
+  }
+
+  navigationButtonPressed = ({ buttonId }) => {
+    if (buttonId === 'toggleDrawer') {
+      Navigation.mergeOptions('SideDrawer', {
+        sideMenu: {
+          left: {
+            visible: true,
+          },
+        },
+      });
+    }
+  }
+
+
+  initApp = user => {
+    try {
+      if (user) {
+        goHome();
+      } else {
+        goToAuth();
+      }
+    } catch (err) {
       goToAuth();
     }
-  } catch (err) {
-    goToAuth();
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.welcome}>Loading...</Text>
+      </View>
+    );
   }
 }
 
-export default function Initializing() {
-  const [user] = useState(1);
+const mapStateToProps = () => {
+  return {};
+};
 
-  // Similar to componentDidMount and componentDidUpdate:
-  useEffect(() => {
-    // Update the document title using the browser API
-    initApp(user);
-  }, []);
+const mapDispatchToProps = {};
 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.welcome}>Loading...</Text>
-    </View>
-  );
-}
+Initializing.options = () => {
+  return {
+    topBar: {
+      visible: false,
+      drawBehind: true,
+      animate: false,
+    },
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Initializing);

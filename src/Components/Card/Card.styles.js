@@ -5,16 +5,14 @@ const { width } = Dimensions.get('window');
 const styles = StyleSheet.create({
   card: {
     width: width - 20,
-    height: 250,
+    height: 180,
     marginTop: 10,
-    backgroundColor: 'white',
+    backgroundColor: '#DFE7F5',
     borderRadius: 5,
-    padding: 10,
-    // shadowColor: '#000',
-    // shadowOffset: { width: 0, height: 0 },
-    // shadowOpacity: 0.1,
-    // shadowRadius: 5,
-    // elevation: 2,
+  },
+  bgImg: {
+    width: '100%',
+    height: '100%',
   },
   viewTopCard: {
     height: 80,

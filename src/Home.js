@@ -14,38 +14,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from './redux/action';
 import { Card } from './components';
-
-
-const Cards = [
-  {
-    imageUrl:
-    'http://myzeroone.com/myzeroone/17480-business-meeting-wallpaper_24606.jpg',
-    title: 'Java Developer',
-    subtitle: 'New York City',
-    buttonText: 'Apply Now',
-  },
-  {
-    imageUrl:
-      'http://www.capcom3c.com/assets/img/slide2.jpg',
-    title: 'React Native Developer',
-    subtitle: 'San Francisco',
-    buttonText: 'Learn More',
-  },
-  {
-    imageUrl:
-      'https://images.pexels.com/photos/872957/pexels-photo-872957.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-    title: 'Node.js Developer',
-    subtitle: 'New York City',
-    buttonText: 'Apply Now',
-  },
-  {
-    imageUrl:
-      'https://www.gdpm.co.uk/images/products_gallery_images/12_Meeting_room.jpg',
-    title: 'Python Developer',
-    subtitle: 'Los Angeles',
-    buttonText: 'Learn More',
-  },
-];
+import Cards from './data';
 
 class Home extends Component {
   componentWillMount() {
@@ -95,19 +64,15 @@ class Home extends Component {
   }
 
   navigationButtonPressed = ({ buttonId }) => {
-    Navigation.showModal({
-      stack: {
-        children: [{
-          component: {
-            name: 'Filters',
-            passProps: {
-              text: 'stack with one child',
-              buttonId,
-            },
+    if (buttonId === 'toggleDrawer') {
+      Navigation.mergeOptions('SideDrawer', {
+        sideMenu: {
+          left: {
+            visible: true,
           },
-        }],
-      },
-    });
+        },
+      });
+    }
   }
 
   goDetail = (item, index) => {
@@ -135,37 +100,17 @@ class Home extends Component {
             ])}
           >
             <View style={{ flex: 1, marginBottom: 20 }}>
-              {/* <Text
-                style={{
-                  fontSize: 24,
-                  fontWeight: '700',
-                  paddingHorizontal: 10,
-                }}
-              >
-                Nuevas
-              </Text> */}
-
-              {/* <View style={{ height: 130, marginTop: 20 }}>
-                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                  {Cards.map((item, index) => (
-                    <Category
-                      key={`${item.title}-Category`}
-                      imageUri={{
-                        uri: item.imageUrl,
-                      }}
-                      name={item.title}
-                      length={cardsLength}
-                      index={index}
-                    />
-                  ))}
-                </ScrollView>
-              </View> */}
               <View style={{ marginTop: 20, paddingHorizontal: 10 }}>
                 <Text style={{ fontSize: 24, fontWeight: '700' }}>
                   Oportunides para invertir
                 </Text>
                 {Cards.map((item, index) => (
-                  <Card key={`${index.toString()}`} item={item} index={index} goDetail={() => this.goDetail()} />
+                  <Card
+                    key={`${index.toString()}`}
+                    item={item}
+                    index={index}
+                    goDetail={() => this.goDetail()}
+                  />
                 ))}
               </View>
             </View>
@@ -186,7 +131,7 @@ Home.defaultProps = {};
 Home.options = () => {
   return {
     layout: {
-      backgroundColor: '#f0f1f8',
+      backgroundColor: '#F7F8F8',
     },
     topBar: {
       elevation: 0,
